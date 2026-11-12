@@ -1,0 +1,34 @@
+
+{
+  "manifest_version": 3,
+
+  "name": "Prism Sales Tax Monitor",
+
+  "version": "1.0.0",
+
+  "description": "Monitors Retail Pro Prism Sales Tax and sends email alerts when VAT discrepancies are detected.",
+
+  "permissions": [],
+
+  "host_permissions": [
+    "https://script.google.com/*",
+    "https://script.googleusercontent.com/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://hbu-pos/*",
+        "https://*/prism.shtml*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
